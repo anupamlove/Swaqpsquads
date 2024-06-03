@@ -1,0 +1,53 @@
+<span class="pl"><button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-3">
+        <mat-icon>clear</mat-icon>
+    </button></span>
+<div class="center-wrapper">
+    <div class="content">
+        <form [formGroup]="updateForm">
+
+            <div class="top-bar" style="text-align: center;">
+                <h2>Payment </h2>
+
+            </div>
+
+            <div class="bag-product">
+
+                <div class="description">
+                    <p class="product-code">Product ID: {{productdata.pid}}</p>
+                    <h2>{{pname}}</h2>
+                    <p class="description-text">Description: {{desc}}</p>
+
+
+                </div>
+            </div>
+
+            <div class="bag-total">
+
+
+
+                <div class="promo-checkbox">
+                    <div class="total">
+                        <label class="col-md-5 labelname">Exchange</label>
+                        <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Select</mat-label>
+                        <mat-select formControlName="pid" ngDefaultControl>
+                            <mat-option *ngFor="let pro of abc" [value]="pro.pid">
+                                {{pro.pname}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+
+
+
+                <button mat-raised-button style="background: hsla(106, 86%, 57%, 0.762)" type="submit"
+                    (click)="onClickSubmitForm()">
+                    Request Exchange
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<mat-toolbar style="background: rgb(130, 207, 238);" class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+
+	<div class="navbar-brand"  class=" col-lg-5 col-md-5 col-sm-5 col-12" routerLink="/navbar/recommendation-service">
+    <img src="assets/Objects.png" width="50" height="50" class="d-inline-block" alt="">
+    <span class="Title"> SwapSquad</span>
+  </div>
+  <!-- <img src="assets/download.png" alt="Girl in a jacket" width="70" height="50"> -->
+      <span class="example-spacer"></span>
+      <div fxShow="true" >
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        
+        <a mat-button [disabled]="isDisabled" style="color: black; Cursor:text !important; Text-Decoration: None !important;">
+          <span class="material-icons" style="color: black; cursor: pointer;" (click)="onClickCoin()">
+            radio_button_checked
+            </span>
+            <span  (click)="onClickCoin()" style="cursor: pointer;">Coins: {{coin}}</span>
+          
+          
+        </a>
+        <a  mat-button [matMenuTriggerFor]="menu" class="email">
+          <span class="material-icons">
+            account_circle
+            </span>
+          {{usersemail}}
+        </a>
+        <mat-menu #menu="matMenu" class="customize">
+          <button mat-menu-item style="color: black;" routerLink='/navbar/myProfile'>My Profile</button>
+
+          <!-- <button mat-menu-item style="color: white;">{{usersemail}}</button> -->
+
+
+          <button mat-menu-item style="color: black" (click)="onClicklogout()">Logout</button>
+        </mat-menu>
+      </div>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item class="parent" routerLink='/navbar/recommendation-service'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Home</span>
+				<mat-icon mat-list-icon>home</mat-icon>
+			</mat-list-item>
+      <mat-list-item class="parent" routerLink='/navbar/registerProduct'>
+				<span class="full-width" *ngIf="isExpanded || isShowing" >Register Product</span>
+          <mat-icon mat-list-icon>workspaces</mat-icon>
+			</mat-list-item>
+      <mat-list-item class="parent" routerLink='/navbar/productregisterbyuser'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Registered Product</span>
+        <mat-icon mat-list-icon>do_not_disturb_on</mat-icon>
+			</mat-list-item>
+      <mat-list-item class="parent" routerLink='/navbar/updateDetails'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Update Profile</span>
+        <mat-icon mat-list-icon>account_circle</mat-icon>
+			</mat-list-item>
+      <mat-list-item class="parent" routerLink='/navbar/transcations'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Transactions</span>
+        <mat-icon mat-list-icon>history</mat-icon>
+        
+			</mat-list-item>
+      
+
+      <mat-list-item class="parent" routerLink='/navbar/chat'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Chat</span>
+        <mat-icon mat-list-icon>chat</mat-icon>        
+			</mat-list-item>
+
+     
+			
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+  <mat-sidenav-content style="width:100%;
+  overflow-x:hidden;
+  overflow-y:hidden;overflow-y: scroll;overflow-x: scroll;">
+    <router-outlet></router-outlet>
+</mat-sidenav-content>
+	
+
+</mat-sidenav-container>
+

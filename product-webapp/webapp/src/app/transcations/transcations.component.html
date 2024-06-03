@@ -1,0 +1,75 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="cont">
+  <div class="drop">
+     <form>
+       <mat-form-field appearance="outline" style="width: 400px;border-color:blue;border-width: 5px;" >
+         <mat-label> <b>Transcation Type</b> </mat-label>
+         <select matNativeControl (change)="selectCar($event)">
+           <option  value=""></option>
+           <option  *ngFor="let tran of transcations" [value]="tran.value"
+                   [selected]="selectedValue === tran.value">{{ tran.value }}</option>
+         </select>
+       </mat-form-field>
+     </form>
+     </div>
+     <div class="x col-xl-9 col-lg-9 col-md-12 col-sm-6 col-12">
+       <div *ngFor="let item of tran">
+         <div class="a">
+           
+           <p style="padding: 10px 0px 0px 20px; position: absolute;"><u><b>Product/Coin Sold</b></u></p>
+           <p style="padding: 10px 0px 0px 150px; position: absolute;"><u><b>{{item.pcoin1}}</b></u></p>
+           <p style="padding: 10px 0px 0px 400px; position: absolute;"><u><b>Product/Coin Gained</b></u></p>
+           <p style="padding: 10px 0px 0px 550px; position: absolute;"><u><b>{{item.pcoin2}}</b></u></p>
+           <p style="padding: 60px 0px 10px 180px; position: absolute; text-transform: capitalize; "><u><b>{{item.pname1}}</b></u></p>
+           <img style="padding: 50px 0px 0px 20px; height: 245px; width: 150px; "   [src]=item.image1 sizes="10px" alt="."/>
+           <img style="padding: 50px 0px 0px 250px; height: 245px;width: 33%;" [src]=item.image2  sizes="10px" alt="."/>
+           <p style="padding: 60px 0px 10px 600px; position: absolute;text-transform: capitalize;"><u><b>{{item.pname2}}</b></u></p>
+           <!-- <p style="padding: 100px 0px 10px 600px; position: absolute;" >{{item.pcategory2}}</p>
+           <p style="padding: 100px 0px 10px 180px; position: absolute;" >{{item.pcategory1}}</p> -->
+           <p style="padding: 40px 5px 0px 700px; position: absolute;"><b>Exchanger Details</b></p>
+           
+           <p style="padding: 80px 5px 0px 700px; position: absolute;text-transform: capitalize;"><b>Transaction Id:</b>{{item.transactionId}}</p>
+           <p style="padding: 100px 5px 0px 700px; position: absolute;"><b>Email::</b>{{item.eemail}}</p>
+           <p style="padding: 140px 5px 0px 700px; position: absolute;"><b>Mode of transaction:-</b></p>
+           <p style="padding: 140px 5px 0px 840px; position: absolute;text-transform: capitalize;"><b>{{item.method_of_Transaction}}</b></p>
+           <div style="padding: 20px 5px 0px 840px;position: absolute;"></div>
+           <div style="padding: 180px 5px 0px 750px;position: absolute;">
+             <button (click)="toggleData()" class="btn btn-success" >Give Review</button>
+           </div>
+           <div style="padding: 50px 5px 0px 400px;" *ngIf="toDisplay">
+             <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value,item.eemail)">
+               <div class="form-group">
+               <star-rating  value={{item.rating}} name="rating" [totalstars]='5' checkedcolor="blue" uncheckedcolor="black" size="30px"
+                                                     readonly="false" (rate)="onRate($event)"></star-rating>
+                                                     </div>
+               <div class="form-group" style="padding-top: 30px;">
+ 
+                 <input type="text" class="form-control" id="exampleInputPassword1" name = "review" placeholder = "review" ngModel>
+               </div>
+               
+               <button type="submit" class="btn btn-success" >Submit</button>
+             </form>
+           <!-- <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+             <input class="form-group"  type = "text" name = "rating" placeholder = "rating" ngModel>
+             <input class="form-group" type = "password" name = "review" placeholder = "review" ngModel>
+             <button style="position: absolute;" type = "submit" value = "submit"></button>
+             </form> -->
+           </div>
+           </div>
+             <!-- <div style="position: absolute;">
+               <form>
+                 <div class="form-group">
+                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                 </div>
+                 <div class="form-group">
+ 
+                   <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                 </div>
+                 
+                 <button type="submit" class="btn btn-primary">Submit</button>
+               </form>
+             </div> -->
+           
+         </div>
+         </div>
+     </div>

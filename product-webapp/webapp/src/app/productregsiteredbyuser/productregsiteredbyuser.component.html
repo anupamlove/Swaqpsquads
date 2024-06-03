@@ -1,0 +1,26 @@
+<div class="row col-md-12 col-lg-12 col-sm-12" style="background-color: rgb(190, 190, 231); border-radius: 6px;">
+    <div class="col-4"></div>
+    <div class="col-4" style="display:contents ; "> <h1>Registered Products</h1> </div>
+    <div class="col-4"></div>
+</div>
+
+<div class="container">
+<div>
+    
+
+    
+</div>
+    <div class=" card-deck" fxLayout="col wrap"    >
+        <div *ngFor="let item of pro" class="row" style="flex-wrap: wrap;">
+    <div class="col-md-3 col-lg-4 col-sm-12">
+        <div class="card" style="width: 15rem; margin-top: 12px;" (click)="productdetails(item.pid)" [style.background]="item.pstatus=='NOTAVAILABLE'? 'rgb(183, 232, 189)': 'rgb(190, 190, 231)'">
+            <img class="card-img-top embed-responsive-item" [src]=item.image alt="Card image cap" >
+            <div class="card-body">
+              <h1 class="card-title" style="text-transform: capitalize;">  {{item.pname}}</h1>
+              <h2 [style.visibility]="item.pstatus=='NOTAVAILABLE'? 'visible': 'hidden'" style="color: red;text-align:right;" class="card-text">Not Available</h2>
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+</div>

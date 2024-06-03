@@ -1,0 +1,216 @@
+<body class="main-content">
+    <!-- Scroll Image -->
+    <div class="row product-content">
+      <div class="col-lg-1 col-md-1 col-sm-2 col-2 lft-scroll-box">
+        <!-- <div class="image-scroll-box" >
+                  <table>
+                      <tr  >
+                          <img mat-card-image src="{{img3}}" alt="img" width="40rem" height="40rem" (click)="doZoom3()" >
+                      </tr>
+                      <tr>
+                          <img mat-card-image src="{{img4}}" alt="img" width="40rem" height="40rem"  (click)="doZoom4()">
+                      </tr>
+                      <tr>
+                          <img mat-card-image src="{{img5}}" alt="img" width="40rem" height="40rem"  (click)="doZoom5()">
+                      </tr>
+                      <tr>
+                          <img mat-card-image src="{{img6}}" alt="img" width="40rem" height="40rem"  (click)="doZoom6()">
+                      </tr>
+                      <tr>
+                          <img mat-card-image src="{{img2}}" alt="img" width="40rem" height="40rem"  (click)="doZoom2()">
+                      </tr>
+                  </table>
+  
+  
+              </div>
+              -->
+      </div>
+  
+      <!-- Main Image of the product -->
+      <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-9 main-image">
+            <!-- <img mat-card-image [src]="img" alt="img" width="300rem" height="300rem"> -->
+            <mat-grid-list cols="1" rowHeight="1:1">
+              <mat-grid-tile>
+                <img mat-card-image [src]="img" alt="img" style='height: 100%; width: 100%; object-fit: contain'/>
+                <!-- <img mat-card-image src="assets/1.jpg" alt="img" > -->
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+  
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+  
+      <div class="col-lg-6 col-md-6 col-sm-10 col-10">
+        <div class="row">
+          <!-- Product Name -->
+          <div>
+            <h1 style="font-size: 3.2vw">{{ pname }}</h1>
+          </div>
+  
+          <!--post date -->
+          <div class="row" style="font-size: 1.2vw">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <p>
+                <!-- <span class="material-icons">location_on</span>{{ pcity }},{{pstate}} -->
+                <span class="material-icons">location_on</span>{{pstate}}
+              </p>
+            </div>
+  
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 post-date">
+              <p><b> Date of Posting :</b> {{ dateofposting }}</p>
+            </div>
+          </div>
+  
+          <div class="row" style="font-size: 1.2vw" style="margin-top: 1rem">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <span class="coin-box"
+                ><i class="fa-solid fa-coins"></i> {{ pcoin }}</span
+              >
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6"></div>
+          </div>
+  
+          <div
+            class="row"
+            style="margin-bottom: 0rem; margin-top: 2rem; font-size: 1.2vw"
+          >
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <p><b> Exchange Mode : </b>{{ pexchangetype }}</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 post-date">
+              <p><b> Year Of Purchase :</b> {{ dateofpurchase }}</p>
+            </div>
+          </div>
+  
+          <!-- Preferences -->
+          <!-- Check to notepad if not work -->
+          <div class="preference">
+            <p style="margin-right: 0.5rem"><b>Preferences :</b></p>
+            <mat-chip-list
+              aria-label="preference selection"
+              *ngFor="let item of pexchange"
+              style="float: left"
+            >
+              <mat-chip>
+                {{ item }}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1"></div>
+    </div>
+    <!--==========================================================First row end here================================================== -->
+  
+    <!-- Row for description -->
+  
+    <div class="row">
+      <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+      <div class="col-lg-4 col-md-4 col-sm-10 col-10">
+        <div class="row">
+          <div class="user-profile-box col-lg-9 col-md-6 col-sm-12">
+            <mat-card class="example-card">
+              <mat-card-subtitle>Product Owner Details</mat-card-subtitle>
+  
+              <div class="product-owner">
+                <div>
+                  <div>
+                    <div class="product-owner-details col-sm-12">
+                      <mat-icon>account_circle</mat-icon>
+                    </div>
+  
+                    <div class="product-owner-details">
+                      <p>
+                        <b>{{ pemail }}</b>
+                      </p>
+                    </div>
+  
+                    <div class="product-owner-details">
+                      <star-rating
+                        value="{{ avgRating }}"
+                        totalstars="{{ totalstar }}"
+                        checkedcolor="blue"
+                        uncheckedcolor="black"
+                        size="15px"
+                        readonly="false"
+                      ></star-rating>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="produuct-owners"></div>
+  
+              <mat-card-actions align="end">
+                
+                <button
+                  mat-raised-button
+                  style="background: #43db52; color: white"
+                  (click)="goToChat()"
+                >
+                  Chat
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-10 col-10">
+        <div class="description-text-box">
+          <p><b>Description of the product</b></p>
+          <p>{{ desc }}</p>
+        </div>
+  
+        <div class="exchange-button" align="end">
+
+          <button mat-raised-button color="primary" disable="getExchangeDisable" (click)="openDialog()">
+
+            Exchange
+          </button>
+          <!-- <button mat-raised-button color="primary" (click)="openDialog2()">Exchange</button> -->
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1"></div>
+    </div>
+  
+    <div class="row" style="padding: 0rem 1rem 0rem 1.5rem">
+      <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+      <div class="col-lg-4 col-md-4"></div>
+      <!-- Description box -->
+      <div class="col-lg-6 col-md-6 col-sm-10 col-10 user-profile-box-review">
+        <div
+          calss="review-table"
+          *ngFor="let ratin of ratings"
+          style="margin-top: 0.5rem"
+        >
+          <!-- <p *ngFor="let ratin of ratings" > -->
+  
+          <div style="margin-bottom: 1rem">
+            <div
+              class="review-box"
+              style="padding-left: 0.5rem; border-radius: 10px"
+            >
+              <b>{{ ratin.userId }}</b>
+              <div class="review-box" style="padding-top: -0.5rem">
+                <star-rating
+                  value="{{ ratin.rating }}"
+                  totalstars="{{ totalstar }}"
+                  checkedcolor="blue"
+                  uncheckedcolor="black"
+                  size="15px"
+                  readonly="false"
+                ></star-rating>
+              </div>
+              <div>{{ ratin.reviews }}</div>
+            </div>
+          </div>
+  
+          <!-- </p> -->
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1"></div>
+    </div>
+  </body>

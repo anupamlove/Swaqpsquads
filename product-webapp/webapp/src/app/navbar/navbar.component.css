@@ -1,0 +1,58 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .example-container {
+    height: 650px;
+    border: 1px solid rgb(130, 207, 238, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+
+  ::ng-deep .customize {
+    background: rgb(130, 207, 238);;
+    color: black;
+  }
+  .Title {
+    font-family: 'Rubik Distressed', cursive;
+    color: black;
+    font-size: 140%;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .Title:hover {
+    
+    color: rgb(210, 29, 41);
+   
+  }
+
+  .navbar-brand{
+    pointer-events: none;
+}
+
+.email:hover{
+  color: inherit;
+  
+}
+

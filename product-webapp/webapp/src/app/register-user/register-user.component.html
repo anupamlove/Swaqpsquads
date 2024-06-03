@@ -1,0 +1,80 @@
+
+<button type="button" class="btn btn-light" routerLink=""><span class="navbar-brand" class=" col-lg-5 col-md-5 col-sm-5 col-12" >
+  <img src="assets/Objects.png" width="50" height="50" class="d-inline-block" alt="">
+  <span class="Title"> SwapSquad</span>
+</span></button><mat-grid-list cols="2" rowHeight="90vh">
+
+<div class="fcontainer">
+
+  <div class="fitem item1">
+    <img src="assets/r3.png" alt="img" width="90%" height="80%">
+  </div>
+
+  <div class="fitem item2">
+
+    <h1>Create Account</h1>
+    <form (ngSubmit)="userRegister()" #myform="ngForm">
+
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" required="required" id="email" name="email" [(ngModel)]="user.email"
+          #email="ngModel" [pattern]="emailPattern" placeholder="Enter Email ">
+
+        <div *ngIf="email.invalid && (email.touched || email.dirty)" style="color:red;">
+          <span *ngIf="email.errors?.required"> *Email Id is required</span>
+          <span *ngIf="email.errors?.pattern">Please enter a valid Email </span>
+
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password</label>
+
+        <input type="password" class="form-control" required="required" id="password" name="password"
+          [(ngModel)]="user.password" #password="ngModel" [pattern]="passwordPattern" placeholder="Enter Password ">
+
+        <div *ngIf="password.invalid && (password.touched || password.dirty)" style="color:red;">
+          <span *ngIf="password.errors?.required">*Password is required</span>
+          <span *ngIf="password.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and
+            atleast 1 special char</span>
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="cpassword" required="required" name="cpassword"
+          [(ngModel)]="user.cpassword" #cpassword="ngModel" [pattern]="passwordPattern"
+          placeholder="Enter confirm password ">
+          <div *ngIf="cpassword.invalid && (cpassword.touched || cpassword.dirty)" style="color:red;">
+            <span *ngIf="password.errors?.required">*Confirm Password is required</span>
+            <span *ngIf="password.value != cpassword.value">Password and confirm password should be same</span>
+
+          <!-- <span *ngIf="cpassword.invalid && cpassword.touched"  style="color:red ;">*Confirm password is required</span> -->
+          <!-- <span *ngIf="password.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and
+            atleast 1 special char</span> -->
+            <!-- <span *ngIf="password.value != cpassword.value"  style="color: red;" > Password and confirm password should be same</span> -->
+        </div>
+      </div>
+
+
+      <div class="form-check ">
+        <input class="form-check-input me-2" type="checkbox" value="yes" id="accept" required="required" name="accept"
+          [(ngModel)]="user.accept" />
+        <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a
+            href="#">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="form-group">
+        <input [disabled]="myform.invalid" class="btn btn-success width:100px" type="submit" name="submit_reg"
+          value="Sign Up">
+      </div>
+      <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+    </form>
+
+
+
+  </div>
+</div>

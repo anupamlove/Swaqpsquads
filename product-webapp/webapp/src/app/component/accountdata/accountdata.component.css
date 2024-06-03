@@ -1,0 +1,24 @@
+.accountnum-box:hover {
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 8px 8px 8px 8px;
+    background: #D9EDFD;
+    box-shadow: 2px 2px 2px 2px #bee4ed;
+}
+table{
+    border-collapse: separate;
+    border-spacing:0.5rem;
+
+}
+.accountnum-box{
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 4px 4px 4px 4px;
+
+}
+.close:hover{
+    display: flex;
+    align-items: center;
+    background-color: #578893;
+
+}

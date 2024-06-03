@@ -1,0 +1,57 @@
+<span class="pl"><button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-3">
+        <mat-icon>clear</mat-icon>
+    </button></span>
+<div class="center-wrapper">
+    <div class="content">
+        <form [formGroup]="updateForm">
+
+            <div class="top-bar" style="text-align: center;">
+                <h2>Payment </h2>
+
+            </div>
+
+            <div class="bag-product">
+
+                <div class="description">
+                    <p class="product-code">Product ID: {{productdata.pid}}</p>
+                    <h2>{{pname}}</h2>
+                    <p class="description-text">Description: {{desc}}</p>
+
+
+                </div>
+            </div>
+            <div class="bag-total">
+                <h3>Available BarterCoin:{{barterCoins}}<i class="fa-solid fa-coins"
+                        style="margin-right: 0.5rem; margin-left: 0.5rem"></i> </h3>
+                <div class="form-group">
+                    <!-- <input type="checkbox" name="promo-check" name="mode" id="coin" > -->
+                    <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                    <label for="promo-check">Pay Using Coin</label>
+
+                </div>
+
+                <div class="promo-checkbox">
+                    <div class="total">
+                        <h3>Total Coin For Exchange :</h3>
+                        <h3><i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>{{pcoin}}
+                        </h3>
+                    </div>
+
+                </div>
+
+                <button mat-raised-button style="background: hsla(106, 86%, 57%, 0.762)" type="submit"
+                    (click)="onClickSubmitForm()">
+                    Request Exchange
+                </button>
+                <span class="pl-lg-3">
+                    <button mat-raised-button color="primary" (click)="onClickCoin()">
+                        Add More Coin
+                    </button>
+                </span>
+                <!-- <button type="button" class="btn btn-success">
+                <span>Request Exchange</span>
+            </button> -->
+            </div>
+        </form>
+    </div>
+</div>

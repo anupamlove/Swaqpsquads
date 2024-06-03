@@ -1,0 +1,104 @@
+<div class="container">
+    <h1 class="text-primary"> Profile Details</h1>
+    <hr>
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="text-center">
+                <img [src]="image" class="avatar img-circle img-thumbnail" alt="Add profile Photo">
+                <h3>Your Profile Picture</h3>
+
+
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body" style="border: 3px solid rgb(55, 6, 116);">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h3 class="mb-2 text-primary">Personal Details</h3>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="fullName"><b>Full Name</b></label>
+                                <h3>{{firstname}} {{lastname}}</h3>
+                            </div>
+                        </div>
+                        <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="eMail">Last Name</label>
+                        <input type="email" class="form-control" id="eMail" placeholder="Enter Last Name">
+                    </div>
+                </div> -->
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="phone"><b>Mobile Number</b></label>
+                                <h3>{{mobile}}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="website"><b>Email</b></label>
+                                <h3>{{email}}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="website"><b>Gender</b></label>
+
+
+                                <h3>{{gender}}</h3>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="website"><b>Age</b></label>
+                                <h3>{{age}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h3 class="mt-3 mb-2 text-primary">Address</h3>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="Street"><b>Street</b></label>
+                                <h3>{{street}}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="ciTy"><b>City</b></label>
+                                <h3>{{city}}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="sTate"><b>State</b></label>
+                                <h3>{{state}}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="pin"><b>Pin Code</b></label>
+                                <h3>{{pincode}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+
+                                <!-- <button type="button" id="submit" name="submit" class="btn btn-warning"><a routerLink="/updateDetails">Edit</a></button> -->
+                                <button (click)="updateEmployee(employees.email)" class="btn btn-primary"> Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

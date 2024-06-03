@@ -1,0 +1,408 @@
+<form [formGroup]="recommendationForm">
+
+  <!-- <div>
+    <h4>My IP Address {{userIP}}</h4>
+  </div> -->
+
+ 
+
+  <div class="total-content">
+
+    <div class="row nav-items">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
+          <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
+            <mat-form-field appearance="outline" style="inline-size: auto;" >
+              <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
+              <select matNativeControl (change)="selectState($event)">
+                <option value=""></option>
+                <option *ngFor="let option of states" [value]="option.value" [selected]="selectedState === option.value">
+                  {{ option.viewValue }}</option>
+              </select>
+            </mat-form-field>
+            <!-- <p>You selected: {{selectedCar}}</p> -->
+
+            <!-- <mat-form-field appearance="outline" style="inline-size: auto;">
+              <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
+              <mat-select formControlName="city" (change)="onSelect()">
+                <mat-option value="Lucknow">Lucknow</mat-option>
+                <mat-option value="Raebareli">Raebareli</mat-option>
+                <mat-option value="Jhansi">Jhansi</mat-option>
+                <mat-option value="Varanasi">Varanasi</mat-option>
+                <mat-option value="Agara">Agara</mat-option>
+                <mat-option value="Barabanki">Barabanki</mat-option>
+                <mat-option value="Sultanpur">Sultanpur</mat-option> -->
+            <!-- <mat-option value="Gujarat">Gujarat</mat-option>
+                <mat-option value="Haryana">Haryana</mat-option>
+                <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                <mat-option value="Jharkhand">Jharkhand</mat-option>
+                <mat-option value="Karnataka">Karnataka</mat-option>
+                <mat-option value="Kerala">Kerala</mat-option>
+                <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                <mat-option value="Maharashtra">Maharashtra</mat-option>
+                <mat-option value="Manipur">Manipur</mat-option>
+                <mat-option value="Meghalaya">Meghalaya</mat-option>
+                <mat-option value="Nagaland">Nagaland</mat-option>
+                <mat-option value="Odisha">Odisha</mat-option>
+                <mat-option value="UP">UP</mat-option> -->
+            <!-- </mat-select>
+            </mat-form-field>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div> -->
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+             <!-- <mat-grid-list cols="1" rowHeight="85px">
+              <mat-grid-tile>
+                <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem" >
+                  <mat-label>
+                    <i class="fa-solid fa-magnifying-glass"  [(ngModel)]="searchTerm" (keyup)="search($event)"></i>
+                    Find Cars, mobile phone and More....</mat-label>
+                  <input matInput type="text">
+                  <button  >
+                    <mat-icon></mat-icon>
+                  </button>
+                </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list> -->
+          </div>
+
+          <!-- <select matNativeControl (change)="selectCar($event)">
+                <option value=""></option>
+                <option *ngFor="let option of cars" [value]="option.value"
+                        [selected]="selectedCar === option.value">{{ option.viewValue }}</option>
+              </select> -->
+
+          <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1 "></div> -->
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
+            <mat-form-field appearance="outline">
+              <mat-label>category</mat-label>
+              <select matNativeControl (change)="selectCategory($event)">
+                <option value=""></option>
+                <option *ngFor="let option1 of categories" [value]="option1.value"
+                  [selected]="selectedCategory === option1.value">{{ option1.viewValue }}</option>
+              </select>
+            </mat-form-field>
+            <!-- <p>You selected: {{selectedCategory}}</p> -->
+            <!-- <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="productCategory" (change)="onSelect()">
+                <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
+                <mat-option value="Cars & Bikes">Cars & Bikes</mat-option>
+                <mat-option value="Books & Sports">Books & Sports</mat-option>
+                <mat-option value="Pets & Pet Care">Pets & Pet Care</mat-option>
+                <mat-option value="Electronics & Appliances">Electronics & Appliances</mat-option>
+                <mat-option value="Home & Life Styles">Home & Life Styles</mat-option>
+              </mat-select>
+            </mat-form-field> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- =============================== * product * ============================================ -->
+
+  <!-- <div *ngFor ="let a of abc">
+  <div class="box" >
+        <a href="">
+        <h4>{{a.productId}}</h4>
+        <p>{{a.productName}}</p>
+        <div class="addres_data">
+          <p>{{city}} {{state}}</p>
+          <p>Today</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<div><p>{{abc[0].productName}}</p></div>
+<div><p>{{abc[0].productId}}</p></div> -->
+  <!-- <div class="product">
+  <div *ngFor ="let a of abc">
+  <div class="First_row">
+    <div class="box">
+      <img [src]="a.productImage" />
+      <a href="">
+        <p>{{a.productName}}</p>
+        <div class="addres_data">
+          <p>{{a.city}} {{a.state}}</p>
+          <p>Today</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+</div> -->
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutAlign="left" fxLayoutGap="2%">
+      <!-- <div fxFlex=25% fxFlex.xs="100%" fxFlex.sm="33%" > -->
+        <!-- <div *ngFor="let a of abc"> -->
+          <mat-card (click)="recommendation(a.productId)" class="example-card" *ngFor="let a of abc " fxFlex="23%" fxLayoutGap="2%">
+            <img mat-card-image [src]="a.productImage" style="height:15rem;">
+              <mat-card-content>
+                <h4 style="color:rgb(132, 20, 124)">MODE OF EXCHANGE : {{a.pexchangetype}}</h4>
+              <p>{{a.productName}}</p>
+              <div class="addres_data">
+                <!-- <p>{{a.city}} , {{a.state}}</p> -->
+                <p>{{a.state}}</p>
+                <p>{{a.pdatepost.substring(0,10)}}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+  <!-- <div *ngFor ="let a of abc">
+<mat-card class="example-card" style="flex-direction: row;">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>{{a.productName}}</p>
+    <div class="addres_data">
+      <p>{{a.city}} , {{a.state}}</p>
+      <p>Today</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+</div>
+</div> -->
+  <!-- <div class="box">
+      <img src="assets/product-2.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>xbox one s</p>
+      <div class="addres_data">
+        <p>CHEMBUR, MUMBAI</p>
+        <p>JUL 27</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-3.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Refrigerator</p>
+      <div class="addres_data">
+        <p>DHARAVI, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="/assets/product-4.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Mitsubishi Pajero (2012)</p>
+      <div class="addres_data">
+        <p>VERSOVA, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="First_row">
+    <div class="box">
+      <img src="assets/product-5.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Black Jeans for man</p>
+      <div class="addres_data">
+        <p>BORIVALI WEST, MUMBAI</p>
+        <p>DEC 24</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-6.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Pricise corrom board</p>
+      <div class="addres_data">
+        <p>IC COLONY, MUMBAI</p>
+        <p>JAN 29</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-7.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>CrossBeat Torq Buds</p>
+      <div class="addres_data">
+        <p>DHARAVI, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-8.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Nikon D7000 DSLR camera</p>
+      <div class="addres_data">
+        <p>ANDHERI WEST, MUMBAI</p>
+        <p>FEB 02</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="First_row">
+    <div class="box">
+      <img src="assets/product-9.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Black jacket</p>
+      <div class="addres_data">
+        <p>KANDIVALI WEST, MUMBAI</p>
+        <p>FEB 11</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-10.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>LG Washing machine</p>
+      <div class="addres_data">
+        <p>SANTACRUZ EAST, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-11.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Running Shoe (athletes)</p>
+      <div class="addres_data">
+        <p>BANDRA EAST, MUMBAI</p>
+        <p>FEB 25</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-12.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Antique teak wood Sofa set</p>
+      <div class="addres_data">
+        <p>Bandra East, Mumbai</p>
+        <p>Today</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="First_row">
+    <div class="box">
+      <img src="assets/product-13.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Hyundai I20 (2010)</p>
+      <div class="addres_data">
+        <p>KHAR EAST, MUMBAI</p>
+        <p>JAN 14</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-14.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>dining table</p>
+      <div class="addres_data">
+        <p>DADAR WEST, MUMBAI</p>
+        <p>JUN 10</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-15.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Mens fastrack watch</p>
+      <div class="addres_data">
+        <p>KURLA EAST, MUMBAI</p>
+        <p>JAN 7</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-16.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Pure Metal Dumbbells</p>
+      <div class="addres_data">
+        <p>Bandra East, Mumbai</p>
+        <p>Today</p>
+      </div>
+    </div>
+
+  </div>
+</div> 
+
+ =============================== * LOde more * ============================================ -->
+
+  <!-- <div class="LOde_more">
+  <button id="Lode_more_id">Lode More</button>
+
+  <div class="lode-More_products" id="lode_more_products_id">
+    <div class="First_row">
+      <div class="box">
+        <a href="#"></a>
+        <img src="assets/product-1.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Mi TV Stick</p>
+        <div class="addres_data">
+          <p>Bandra East, Mumbai</p>
+          <p>Today</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-2.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>xbox one s</p>
+        <div class="addres_data">
+          <p>CHEMBUR, MUMBAI</p>
+          <p>JUL 27</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-3.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Refrigerator</p>
+        <div class="addres_data">
+          <p>DHARAVI, MUMBAI</p>
+          <p>Today</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-4.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Mitsubishi Pajero (2012)</p>
+        <div class="addres_data">
+          <p>VERSOVA, MUMBAI</p>
+          <p>Today</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="First_row">
+      <div class="box">
+        <img src="/src/assets/product-5.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Black Jeans for man</p>
+        <div class="addres_data">
+          <p>BORIVALI WEST, MUMBAI</p>
+          <p>DEC 24</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-6.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Pricise corrom board</p>
+        <div class="addres_data">
+          <p>IC COLONY, MUMBAI</p>
+          <p>JAN 29</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-7.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>CrossBeat Torq Buds</p>
+        <div class="addres_data">
+          <p>DHARAVI, MUMBAI</p>
+          <p>Today</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-8.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Nikon D7000 DSLR camera</p>
+        <div class="addres_data">
+          <p>ANDHERI WEST, MUMBAI</p>
+          <p>FEB 02</p>
+        </div>
+      </div>
+    </div>
+  </div>  -->
+  <!-- </div> -->

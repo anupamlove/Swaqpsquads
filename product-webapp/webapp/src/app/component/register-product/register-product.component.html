@@ -1,0 +1,425 @@
+<body>
+  <!-- <form [formGroup]="productForm" (ngSubmit)="onClickSubmitForm()"> -->
+  <form [formGroup]="productForm" #stepper>
+    <mat-horizontal-stepper class="body">
+      <!-- ===================Step 1 start here======================== -->
+
+      <mat-step label="Step 1" state="phone">
+        <!-- <form > -->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+            <mat-card class="mat-custom-card">
+              <div class="card-header card-custom-header">
+                <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+                <p class="card-category card-title h1 header-card-text">
+                  Register Your Product
+                </p>
+              </div>
+
+              <div class="form-horizontal horizontal-card-form">
+                <div class="row">
+                  <div class="col-lg-2 col-md-2"></div>
+                  <div class="col-lg-9 col-md-9">
+                    <span class="small" *ngIf="
+                        productForm.controls['pname'].touched &&
+                        productForm.controls['pname'].invalid &&
+                        productForm.controls['pname'].errors?.required
+                      " style="color: red">Please Fill the Product Name*
+                    </span>
+                    <div *ngIf="
+                        productForm.controls['pname'].touched &&
+                        productForm.controls['pname'].invalid &&
+                        productForm.controls['pname'].errors?.minlength
+                      " style="color: red">
+                      Should be min. 2 Characters
+                    </div>
+                  </div>
+                  <div class="col-lg-1 col-md-1"></div>
+                  <label class="col-lg-2 col-md-2 labelname">Product Name</label>
+                  <mat-form-field class="col-lg-9 col-md-9" appearance="outline">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput formControlName="pname" />
+                  </mat-form-field>
+                  <div class="col-lg-1 col-md-1"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-2"></div>
+                  <div class="col-md-3">
+                    <span class="small" *ngIf="
+                        productForm.controls['pcategory'].touched &&
+                        productForm.controls['pcategory'].invalid &&
+                        productForm.controls['pcategory'].errors?.required
+                      " style="color: red">Please Select*
+                    </span>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2"></div>
+                  <div class="col-md-3">
+                    <span class="small" *ngIf="
+                        productForm.controls['pdatepost'].touched &&
+                        productForm.controls['pdatepost'].invalid &&
+                        productForm.controls['pdatepost'].errors?.required
+                      " style="color: red">Please Fill Date in Proper Format*
+                    </span>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <label class="col-md-2 labelname">Category</label>
+                  <mat-form-field class="col-md-3" appearance="outline">
+                    <mat-label>Select</mat-label>
+                    <mat-select formControlName="pcategory" ngDefaultControl>
+                      <div (click)="show(1)">
+                        <mat-option value="Mobiles">Mobiles</mat-option>
+                        <mat-option value="Automobiles">Automobiles</mat-option>
+                        <mat-option value="Electronics">Electronics</mat-option>
+                        <mat-option value="Fashion">Fashion</mat-option>
+                        <mat-option value="Appliances">Appliances</mat-option>
+                        <mat-option value="Furnitures">Furnitures</mat-option>
+                      </div>
+                      <!-- <mat-option value="Others" (click)="show(2)">Others</mat-option> -->
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+
+                  <label class="col-md-2 labelname">Purchase Date</label>
+                  <mat-form-field class="col-md-3" appearance="outline">
+                    <mat-label>Choose a date</mat-label>
+                    <!-- <input matInput [matDatepicker]="picker" formControlName="pdatepost" /> -->
+                    <input matInput type="date" formControlName="pdatepost" max="{{maxDate}}"/>
+                    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+                  <div class="col-md-1"></div>
+                </div>
+
+                <div class="row">
+                  <label class="col-md-2 labelname" *ngIf="othercatergory">If Other</label>
+                  <mat-form-field class="col-md-3" appearance="outline" *ngIf="othercatergory">
+                    <mat-label>Any</mat-label>
+                    <!-- <input matInput formControlName="pcategoryother"/> -->
+                    <input matInput />
+                  </mat-form-field>
+
+                  <div class="col-md-7"></div>
+                </div>
+
+                <div class="row">
+                  <label class="col-md-2 labelname">Description</label>
+                  <div class="col-md-10"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-10">
+                    <span class="small" *ngIf="
+                        productForm.controls['desc'].touched &&
+                        productForm.controls['desc'].invalid &&
+                        productForm.controls['desc'].errors?.required
+                      " style="color: red">Please Fill Description
+                    </span>
+                    <span class="small" *ngIf="
+                        productForm.controls['desc'].touched &&
+                        productForm.controls['desc'].invalid &&
+                        productForm.controls['desc'].errors?.minlength
+                      " style="color: red">Should be min. 10 Characters*
+                    </span>
+                    <span class="small" *ngIf="
+                        productForm.controls['desc'].touched &&
+                        productForm.controls['desc'].invalid &&
+                        productForm.controls['desc'].errors?.maxlength
+                      " style="color: red">Should be max. 350 Characters*
+                    </span>
+                  </div>
+                  <div class="col-md-1"></div>
+
+                  <div class="col-md-1"></div>
+
+                  <mat-form-field class="col-md-10" appearance="outline">
+                    <!-- <mat-label>Description</mat-label> -->
+                    <textarea matInput formControlName="desc"></textarea>
+                  </mat-form-field>
+                  <div class="col-md-1"></div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+
+        <!-- For Photo Update -->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+            <mat-card class="step3-mat-custom-card">
+              <div class="card-header step3-card-custom-header col-md-2">
+                <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+                <p class="card-category card-title h6 step3-header-card-text">
+                  Upload Photos
+                </p>
+              </div>
+
+              <div class="form-horizontal horizontal-card-form">
+                <span class="small" *ngIf="
+                    productForm.controls['image'].touched &&
+                    productForm.controls['image'].invalid &&
+                    productForm.controls['image'].errors?.required
+                  " style="color: red">Please Upload Image*
+                </span>
+                <div class="container col-md-12">
+                  <input type="file" (change)="handleFileInput($event.target.files)" formControlName="image" />
+                </div>
+
+                <div class="row">
+                  <mat-grid-list cols="8" rowHeight="1:1">
+                    <!-- <div style="position: relative;">
+                      
+                        <img *ngFor= 'let url of urls' [src]="url" width="100px" height="100px" >
+                      </div> -->
+                  </mat-grid-list>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+        <!-- Button setion starts-->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-10 step-one-next-btn">
+              <button mat-raised-button color="primary" matStepperNext>
+                Next
+              </button>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+        <!-- Button setion ends-->
+        <!-- </form> -->
+      </mat-step>
+
+      <!-- ===================Step 1 ends here======================== -->
+
+      <!-- ===================Step 2 start here======================== -->
+
+      <mat-step label="Step 2" state="chat">
+        <!-- For Exchange Mode  -->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+            <mat-card class="step3-mat-custom-card">
+              <div class="card-header step3-card-custom-header col-md-2">
+                <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+                <p class="card-category card-title h6 step3-header-card-text">
+                  Exchange
+                </p>
+              </div>
+
+              <div class="form-horizontal horizontal-card-form">
+                <div class="row">
+                  <div class="col-lg-2 payment-mode-message">
+                    <span class="small">
+                      Mandatory*
+                    </span></div>
+                  <!-- <span class="small" *ngIf="
+                    productForm.controls['pexchangetype'].touched &&
+                    productForm.controls['pexchangetype'].invalid &&
+                    productForm.controls['pexchangetype'].errors?.required
+                  " style="color: red">Please Select the Mode of Exchange*
+                    </span> -->
+                  <div class="col-lg-10">
+
+                  </div>
+
+                  <label class="col-md-2 step2-labelname">Exchange Mode</label>
+                  <div class="col-md-1"></div>
+                  <mat-radio-group aria-label="Select an option" class="col-md-7" formControlName="pexchangetype" ngDefaultControl>
+                    <!-- class="form-control" id="pexchange" name="pexchange [(ngModel)]="product.pexchange" -->
+                    <mat-radio-button value="COIN" class="col-md-4" (click)="text(0)">
+                      <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                      Coin
+                    </mat-radio-button>
+                    <mat-radio-button value="BARTER" class="col-md-4" (click)="text(1)">
+                      <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                      Exchange
+                    </mat-radio-button>
+                    <mat-radio-button value="BOTH" class="col-md-4" (click)="text(2)">
+                      <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                      Both
+                      <i class="fa-solid fa-right-left" style="margin-left: 0.5rem"></i>
+                    </mat-radio-button>
+                  </mat-radio-group>
+                  <div class="col-md-2"></div>
+
+
+                </div>
+
+                <div class="row" style="margin-top: 1rem">
+
+                  <label class="col-md-2 labelname" *ngIf="coin">Coin</label>
+                  <div class="col-md-3" *ngIf="coin">
+                    <div class="col-lg-12">
+                      <span class="small" *ngIf="
+                    productForm.controls['pcoin'].touched &&
+                    productForm.controls['pcoin'].invalid &&
+                    productForm.controls['pcoin'].errors?.required
+                  " style="color: red">Required*
+                      </span>
+                      <span class="small" *ngIf="
+                    productForm.controls['pcoin'].touched &&
+                    productForm.controls['pcoin'].invalid &&
+                    productForm.controls['pcoin'].errors?.pattern
+                  " style="color: red">Only Numeric Value*
+                      </span>
+                      <span class="small" *ngIf="
+                    productForm.controls['pcoin'].touched &&
+                    productForm.controls['pcoin'].invalid &&
+                    productForm.controls['pcoin'].errors?.maxlength
+                  " style="color: red">Reached 10 million*
+                      </span>
+                    </div>
+                    <div class="col-lg-12">
+                      <mat-form-field *ngIf="coin" appearance="outline">
+                        <mat-label>Amount</mat-label>
+                        <input matInput formControlName="pcoin" />
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-1" *ngIf="blankspace"></div>
+
+                  <label class="col-md-2 labelname" *ngIf="preference">Preference</label>
+                  <div class="col-md-3" *ngIf="preference">
+                    <div class="col-md-12">
+                      <span class="small" *ngIf="
+                    productForm.controls['pcoin'].touched &&
+                    productForm.controls['pcoin'].invalid &&
+                    productForm.controls['pcoin'].errors?.required" , style="color: red">Required*
+                      </span>
+                    </div>
+                    <mat-form-field class="example-chip-list" class="col-md-12" *ngIf="preference" appearance="outline">
+                      <mat-chip-list #chipList aria-label="Fruit selection" formArrayName="pexchange">
+                        <mat-chip *ngFor="let fruit of fruitControls.value" [selectable]="selectable"
+                          [removable]="removable" (removed)="remove(fruit)">
+                          {{ fruit }}
+                          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                        <input [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
+                      </mat-chip-list>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+
+        <!-- User Login Details  -->
+
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+            <mat-card class="step3-mat-custom-card">
+              <div class="card-header step3-card-custom-header col-md-2">
+                <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+                <p class="card-category card-title h6 step3-header-card-text">
+                  Your Detail
+                </p>
+              </div>
+
+              <div class="form-horizontal horizontal-card-form">
+                <div class="row">
+                  <div class="col-lg-2">
+
+                  </div>
+                  <div class="col-lg-10"> <span class="small user-detail">
+                      Read Section Only
+                    </span></div>
+                  <div></div>
+                  <label class="col-md-2 labelname">Confirm Email</label>
+
+                  <mat-form-field class="col-md-3" appearance="outline">
+                    <mat-label>
+                      <p>{{pemail}}</p>
+                    </mat-label>
+                    <!-- <input matInput formControlName="pemail" readonly /> -->
+                    <input matInput placeholder="" readonly />
+                  </mat-form-field>
+
+                  <div class="col-md-1"></div>
+
+                  <label class="col-md-2 labelname">Location</label>
+                  <!-- <mat-form-field class="col-md-3" appearance="outline">
+                    <mat-label>Jharkhand</mat-label>
+                    <input matInput formControlName="pstate" readonly />
+                  </mat-form-field> -->
+                  <div class="col-md-3">
+                    <span class="small" *ngIf="
+                    productForm.controls['pstate'].touched &&
+                    productForm.controls['pstate'].invalid &&
+                    productForm.controls['pstate'].errors?.required" , style="color: red">Required*
+                    </span>
+                    <mat-form-field class="col-md-12" appearance="outline">
+                      <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Place
+                      </mat-label>
+                      <mat-select formControlName="pstate" ngDefaultControl>
+                        <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+                        <mat-option value="Assam">Assam</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="Bihar">Bihar</mat-option>
+                        <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
+                        <mat-option value="Goa">Goa</mat-option>
+                        <mat-option value="Gujarat">Gujarat</mat-option>
+                        <mat-option value="Haryana">Haryana</mat-option>
+                        <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                        <mat-option value="Jharkhand">Jharkhand</mat-option>
+                        <mat-option value="Karnataka">Karnataka</mat-option>
+                        <mat-option value="Kerala">Kerala</mat-option>
+                        <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                        <mat-option value="Maharashtra">Maharashtra</mat-option>
+                        <mat-option value="Manipur">Manipur</mat-option>
+                        <mat-option value="Meghalaya">Meghalaya</mat-option>
+                        <mat-option value="Nagaland">Nagaland</mat-option>
+                        <mat-option value="Odisha">Odisha</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+        <!-- Button setion starts-->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-back-btn">
+            <button mat-raised-button matStepperPrevious color="primary">
+              Back
+            </button>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-next-btn">
+            <button mat-raised-button style="background: #43db52" type="submit" 
+              (click)="onClickSubmitForm()" [disabled]="!productForm.valid">
+              Finish
+            </button>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+        <!-- Button setion ends-->
+      </mat-step>
+      <!-- ===================Step 2 ends here======================== -->
+    </mat-horizontal-stepper>
+  </form>
+
+</body>

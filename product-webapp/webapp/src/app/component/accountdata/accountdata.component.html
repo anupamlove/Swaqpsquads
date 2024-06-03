@@ -1,0 +1,204 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+   
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+           
+           
+            <h2 class="save-card text-primary mb-1">Saved Cards</h2>
+           
+            <div class="d-flex justify-content-center mb-2">
+            <div>
+              <table  *ngFor="let num of emaildataobj">
+                  <tr>
+                     
+              <div  class="accountnum-box"  (click)="onclickgetaccount(num.accountNumber)" > {{num.accountNumber}}</div>
+          
+              </tr>
+          </table>
+          </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+     
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="close">
+              <mat-icon (click)="onClickClear()" style=" cursor: pointer;">clear</mat-icon>
+            </div>
+               <form [formGroup]="accountForm"  >
+            <div class="row">
+              <div class="col-sm-3" style="padding-top:1rem;">
+                  <label >Accountholder Name</label>
+              </div>
+              
+              <div class="col-sm-9">
+                  
+                  <mat-form-field class="small" appearance="outline">
+                      
+                      <input matInput type="text" formControlName="accountHolderName" style='text-transform:uppercase'>{{accountHolderName}}
+                     
+                    <span class="small" *ngIf="
+                      accountForm.controls['accountHolderName'].touched &&
+                      accountForm.controls['accountHolderName'].invalid &&
+                      accountForm.controls['accountHolderName'].errors?.required
+                    " style="color: red">Please enter your Name*
+                  </span>
+                 
+                
+                     
+                    </mat-form-field>
+                  
+                   
+                    
+              </div>
+            </div>
+
+            
+
+           
+
+            <div class="row">
+              <div class="col-sm-3" style="padding-top:1rem;">
+                  <label >Account Number</label>
+              </div>
+              <div class="col-sm-9">
+                  <mat-form-field appearance="outline">
+                  
+                      <input matInput type="text" formControlName="accountNumber">{{accountNumber}}
+                      <span class="small" *ngIf="
+                      accountForm.controls['accountNumber'].touched &&
+                      accountForm.controls['accountNumber'].invalid &&
+                      accountForm.controls['accountNumber'].errors?.required
+                    " style="color: red"> Enter Account Number*
+                  </span>
+                  <span class="small" *ngIf="
+                      accountForm.controls['accountNumber'].touched &&
+                      accountForm.controls['accountNumber'].invalid &&
+                      accountForm.controls['accountNumber'].errors?.pattern
+                    " style="color: red">Enter Numbers only*
+                  </span>
+                  <span class="small" *ngIf="
+                      accountForm.controls['accountNumber'].touched &&
+                      accountForm.controls['accountNumber'].invalid &&
+                      accountForm.controls['accountNumber'].errors?.minlength
+                    " style="color: red">Minimum should be 9 numbers*
+                  </span>
+                  <span class="small" *ngIf="
+                      accountForm.controls['accountNumber'].touched &&
+                      accountForm.controls['accountNumber'].invalid &&
+                      accountForm.controls['accountNumber'].errors?.maxlength
+                    " style="color: red">Maximmum should be 18 numbers*
+                  </span>
+                    </mat-form-field>
+                
+              </div>
+            </div>
+          
+            <div class="row">
+              <div class="col-sm-3" style="padding-top:1rem;">
+                  <label >Cvv</label>
+              </div>
+              <div class="col-sm-9">
+                <mat-form-field appearance="outline">
+                  
+                  <input matInput type="password" formControlName="cvv" >{{cvv}}
+                  <span class="small" *ngIf="
+                  accountForm.controls['cvv'].touched &&
+                  accountForm.controls['cvv'].invalid &&
+                  accountForm.controls['cvv'].errors?.required
+                " style="color: red"> Enter cvv*
+              </span>
+              <span class="small" *ngIf="
+                  accountForm.controls['cvv'].touched &&
+                  accountForm.controls['cvv'].invalid &&
+                  accountForm.controls['cvv'].errors?.pattern
+                " style="color: red">Enter Numbers only*
+              </span>
+              <span class="small" *ngIf="
+                  accountForm.controls['cvv'].touched &&
+                  accountForm.controls['cvv'].invalid &&
+                  accountForm.controls['cvv'].errors?.minlength
+                " style="color: red">Minimum should be 3*
+              </span>
+              <span class="small" *ngIf="
+                  accountForm.controls['cvv'].touched &&
+                  accountForm.controls['cvv'].invalid &&
+                  accountForm.controls['cvv'].errors?.maxlength
+                " style="color: red">Maximmum should be 4*
+              </span>
+              
+                </mat-form-field>
+              </div>
+            </div>
+          
+            <div class="row">
+              <div class="col-sm-3" style="padding-top:1rem;">
+                  <label >Expiry Month</label>
+              </div>
+              <div class="col-sm-9">
+               <mat-form-field appearance="outline">
+                  <input  matInput type="month" formControlName="expiryMonth" style='text-transform:uppercase'>{{expiryMonth}}
+               </mat-form-field>
+
+               
+               
+              
+                
+                <span class="small" *ngIf="
+                accountForm.controls['expiryMonth'].touched &&
+                accountForm.controls['expiryMonth'].invalid &&
+                accountForm.controls['expiryMonth'].errors?.pattern
+              " style="color: red">Enter Month and Year only*
+            </span>
+   
+   <!-- <mat-form-field appearance="outline">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field> -->
+  
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3" style="padding-top:1rem;">
+                  <label >Amount</label>
+              </div>
+              <div class="col-sm-9">
+                <mat-form-field appearance="outline">
+                  
+                  <input matInput type="text" formControlName="amount" placeholder="Enter amount">
+                  
+            
+                </mat-form-field>
+                <mat-hint style="color: red">conversion: 1Coin= 10Rupees</mat-hint>
+              </div>
+            </div>
+
+            
+            
+
+          
+         
+          
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-outline-primary" style="padding-left: 1rem;" type="submit"(click)="onSave()"  [disabled]="!accountForm.valid">Save Card</button>
+              <button type="button" class="btn btn-primary ms-3" (click)="onAddCoin()">Add Coin</button>
+            </div>
+          </form>
+          </div>
+        </div>
+       
+     
+  </div>
+
+
+    </div>
+  </div>
+</section>
